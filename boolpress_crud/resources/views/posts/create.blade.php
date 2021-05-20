@@ -22,15 +22,15 @@
 
         <div class="form-group">
           <label for="name">Title</label>
-          <input type="text" class="form-control" id="name">
+          <input type="text" class="form-control" id="name" value={{ old('name') }}>
         </div>
         <div class="form-group">
             <label for="topic">Topic</label>
-            <input type="text" class="form-control" id="topic">
+            <input type="text" class="form-control" id="topic" value={{ old('topic') }}>
           </div>
         <div class="form-group">
           <label for="text">Author</label>
-          <input type="text" class="form-control" id="author">
+          <input type="text" class="form-control" id="author" value={{ old('author') }}>
         </div>
         <div class="form-group">
             <label for="description">Testo</label>

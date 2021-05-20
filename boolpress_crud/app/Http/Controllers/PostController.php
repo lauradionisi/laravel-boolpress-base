@@ -7,6 +7,15 @@ use App\Post;
 
 class PostController extends Controller
 {
+
+    protected function valida(Request $request) {
+        $request->validate([
+            'name' => 'required|unique:posts|max:255',
+            'topic' =>'required|max:30',
+            'author'=> 'required|max:30',
+            'description'=> 'required',    
+        ]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -40,13 +49,7 @@ class PostController extends Controller
     {
         $data = $request->all();
 
-        $request->validate([
-            'name' => 'required|unique:posts|max:255',
-            'topic' =>'required|max:30',
-            'author'=> 'required|max:30',
-            'description'=> 'required',
-            
-        ]);
+        $this->valida($request);
 
         $new_post = new Post();
         // $new_post->name = $data['name'];
@@ -112,6 +115,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index')->with('status', 'Post Eliminato');
     }
 }

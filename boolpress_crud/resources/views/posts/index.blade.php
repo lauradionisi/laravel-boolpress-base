@@ -4,6 +4,11 @@
 
 @section('content')
     <h1>Tutti gli articoli</h1>
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
 
     <a href="{{ route('posts.create') }}" class="btn btn-primary">Nuovo post</a>
     
